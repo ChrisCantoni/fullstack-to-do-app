@@ -3,7 +3,17 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 // GET
-
+router.get('/', (req, res) => {
+    queryText = `SELECT * FROM "todo";`;
+    pool.query(queryText)
+    .then((result) => {
+        console.log('GET /todo successful');
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('GET /todo error', error);
+        res.sendStatus(500);
+    })
+})
 // POST
 
 // PUT
