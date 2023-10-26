@@ -24,7 +24,7 @@ useEffect(() => {
     <div>
       <h1>TO DO APP</h1>
       <TodoInput getToDoList={getToDoList}/>
-      <TodoList toDoList={toDoList}/>
+      <TodoList toDoList={toDoList} getToDoList={getToDoList}/>
     </div>
   );
 
