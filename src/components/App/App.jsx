@@ -23,7 +23,6 @@ useEffect(() => {
     <div>
       <h1>TO DO APP</h1>
       <TodoInput getToDoList={getToDoList}/>
-      {JSON.stringify(toDoList)}
       <ul>
       {toDoList.map((todo) => {
         return <li>{todo.objective}</li>

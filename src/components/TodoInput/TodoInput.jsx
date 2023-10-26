@@ -24,7 +24,7 @@ const TodoInput = (props) => {
         <>
             <h3>What do you need to get done?</h3>
             <form onSubmit={sendTodoToServer}>
-                <input placeholder="Today I'm going to get it done!"
+                <input style={{width: '400px'}} placeholder="Today I'm going to get it done!"
                 value={objective} onChange={(e) => setObjective(e.target.value)}
                 />
                 <button>Carpe Diem!</button>
