@@ -15,6 +15,21 @@ router.get('/', (req, res) => {
     })
 })
 // POST
+router.post('/', (req, res) => {
+    let todo = req.body;
+    let queryText = `
+    INSERT INTO "todo" ("objective")
+    VALUES ($1);
+    `;
+    pool.query(queryText, [todo.objective])
+    .then((result) => {
+        console.log('Successful POST')
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.error('POST req', error);
+        res.sendStatus(500);
+    })
+})
 
 // PUT
 

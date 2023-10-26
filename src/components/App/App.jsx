@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import TodoInput from '../TodoInput/TodoInput';
 
 function App () {
   const [toDoList, setToDoList] = useState([]);
@@ -21,6 +22,7 @@ useEffect(() => {
   return (
     <div>
       <h1>TO DO APP</h1>
+      <TodoInput getToDoList={getToDoList}/>
       {JSON.stringify(toDoList)}
       <ul>
       {toDoList.map((todo) => {
