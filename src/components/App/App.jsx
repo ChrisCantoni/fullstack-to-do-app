@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import TodoInput from '../TodoInput/TodoInput';
+import TodoList from '../TodoList/TodoList';
 
 function App () {
   const [toDoList, setToDoList] = useState([]);
@@ -23,11 +24,7 @@ useEffect(() => {
     <div>
       <h1>TO DO APP</h1>
       <TodoInput getToDoList={getToDoList}/>
-      <ul>
-      {toDoList.map((todo) => {
-        return <li>{todo.objective}</li>
-      })}
-      </ul>
+      <TodoList toDoList={toDoList}/>
     </div>
   );
 
