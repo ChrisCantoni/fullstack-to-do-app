@@ -1,8 +1,9 @@
+import axios from 'axios';
+
 const TodoItem = (props) => {
     
     const clickHandler = () => {
-        console.log('You selected', props.objective);
-        Axios.delete(`/todo/${props.todo.id}`)
+        axios.delete(`/todo/${props.todo.id}`)
         .then((response) => {
             props.getToDoList();
         }).catch((error) => {
