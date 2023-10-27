@@ -34,11 +34,14 @@ router.post('/', (req, res) => {
 // PUT
 router.put('/:id', (req, res) => {
     console.log('PUT req', req.params);
+    let date = new Date();
+    date = date.toISOString();
     const queryText =`
-    UPDATE "todo" SET "completed" = NOT "completed"
+    UPDATE "todo" SET "completed" = NOT "completed",
+    "date_completed" = $2
     WHERE "id" = $1;
     `;
-    pool.query(queryText, [req.params.id])
+    pool.query(queryText, [req.params.id, date])
     .then((result) => {
         res.sendStatus(201);
     }).catch((error) => {

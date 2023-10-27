@@ -13,6 +13,7 @@ const TodoList = (props) => {
                 <th>Date Added</th>
                 <th>Deadline</th>
                 <th>Completed?</th>
+                <th>Date Completed</th>
                 <th>Delete</th>
                 </tr>
             </thead>

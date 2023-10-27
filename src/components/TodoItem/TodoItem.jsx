@@ -33,10 +33,16 @@ const TodoItem = (props) => {
             <tr className={props.todo.completed ? 'complete' : 'pending'}>
                 <td>{props.todo.objective}</td>
                 <td>{moment(props.todo.date_added).format('llll')}</td>
-                <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}
+                <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}</td>
                 
-                </td>
                 <td><button onClick={toggleComplete}>Completed?</button></td>
+                
+                <td>{props.todo.date_completed != undefined ? moment(props.todo.date_completed).format('llll') : 'Not yet!'}</td>
+
+                {/* <td>{moment(props.todo.date_completed).format('llll')}</td> */}
+                {/* <td>{props.todo.date_completed = undefined ? 'Complete this' :
+                moment(props.todo.date_completed).format('llll')}</td> */}
+
                 <td><button onClick={clickHandler}>Delete</button></td>
             </tr>
         </>
