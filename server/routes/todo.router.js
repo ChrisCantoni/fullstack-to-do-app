@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     let todo = req.body;
     let queryText = `
-    INSERT INTO "todo" ("objective")
-    VALUES ($1);
+    INSERT INTO "todo" ("objective", "deadline")
+    VALUES ($1, $2);
     `;
-    pool.query(queryText, [todo.objective])
+    pool.query(queryText, [todo.objective, todo.deadline])
     .then((result) => {
         console.log('Successful POST')
         res.sendStatus(200);
