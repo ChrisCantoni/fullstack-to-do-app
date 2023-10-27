@@ -36,9 +36,8 @@ const TodoItem = (props) => {
                 <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}</td>
                 
                 <td><button onClick={toggleComplete}>Completed?</button></td>
+                <td className='pending'>{props.todo.completed ? moment(props.todo.date_completed).format('llll') : 'Not yet!'}</td>
                 
-                <td>{props.todo.date_completed != undefined ? moment(props.todo.date_completed).format('llll') : 'Not yet!'}</td>
-
                 {/* <td>{moment(props.todo.date_completed).format('llll')}</td> */}
                 {/* <td>{props.todo.date_completed = undefined ? 'Complete this' :
                 moment(props.todo.date_completed).format('llll')}</td> */}

@@ -13,6 +13,6 @@ VALUES
 ('Replace Batmobile');
 
 ALTER TABLE "todo"
-ADD "date_added" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ADD "deadline" TIMESTAMP,
-ADD "date_completed" TIMESTAMP;
+ADD "date_added" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+ADD "deadline" TIMESTAMPTZ,
+ADD "date_completed" TIMESTAMPTZ;

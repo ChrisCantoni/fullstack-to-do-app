@@ -1,3 +1,17 @@
 .complete {
-    text-decoration: line-through;
+   
+    text-decoration:line-through;
+}
+
+.pending {
+ 
+    text-decoration:none;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+
+tr:hover {
+    background-color: #77f4ca;
 }
