@@ -32,6 +32,20 @@ router.post('/', (req, res) => {
 })
 
 // PUT
+router.put('/:id', (req, res) => {
+    console.log('PUT req', req.params);
+    const queryText =`
+    UPDATE "todo" SET "completed" = NOT "completed"
+    WHERE "id" = $1;
+    `;
+    pool.query(queryText, [req.params.id])
+    .then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.error('Serverside completion error', error);
+        res.sendStatus(500);
+    })
+})
 
 // DELETE
 router.delete('/:id', (req, res) => {

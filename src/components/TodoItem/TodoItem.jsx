@@ -12,9 +12,20 @@ const TodoItem = (props) => {
         })
     }
 
+    const toggleComplete = () => {
+        console.log('Completed', props.objective);
+        axios.put(`/todo/${props.todo.id}`)
+        .then((response) => {
+            props.getToDoList();
+        }).catch((error) => {
+            console.error('Complete button error', error);
+            alert('Something went wrong completing this objective');
+        })
+    }
+
     return (
             <li>{props.objective}
-                <button>Completed?</button>
+                <button onClick={toggleComplete}>Completed?</button>
                 <button onClick={clickHandler}>Delete</button>
             </li>
     )
