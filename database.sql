@@ -11,3 +11,8 @@ VALUES
 ('Vacuum the chimney'),
 ('Write to Hans'),
 ('Replace Batmobile');
+
+ALTER TABLE "todo"
+ADD "date_added" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD "deadline" TIMESTAMP,
+ADD "date_completed" TIMESTAMP;

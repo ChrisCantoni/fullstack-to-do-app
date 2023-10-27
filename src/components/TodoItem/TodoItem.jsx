@@ -1,4 +1,6 @@
 import axios from 'axios';
+import moment from 'moment';
+import './TodoItem.css';
 
 const TodoItem = (props) => {
     
@@ -13,7 +15,10 @@ const TodoItem = (props) => {
     }
 
     const toggleComplete = () => {
-        console.log('Completed', props.objective);
+        let date = new Date();
+        console.log(props.todo.deadline);
+        let completeDate = date.toLocaleTimeString(); // Date down to the minute slice(0, 21)
+        console.log('Completed', props.todo.objective);
         axios.put(`/todo/${props.todo.id}`)
         .then((response) => {
             props.getToDoList();
@@ -24,10 +29,17 @@ const TodoItem = (props) => {
     }
 
     return (
-            <li>{props.objective}
-                <button onClick={toggleComplete}>Completed?</button>
-                <button onClick={clickHandler}>Delete</button>
-            </li>
+        <>
+            <tr className={props.todo.completed ? 'complete' : 'pending'}>
+                <td>{props.todo.objective}</td>
+                <td>{moment(props.todo.date_added).format('llll')}</td>
+                <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}
+                
+                </td>
+                <td><button onClick={toggleComplete}>Completed?</button></td>
+                <td><button onClick={clickHandler}>Delete</button></td>
+            </tr>
+        </>
     )
 }
 

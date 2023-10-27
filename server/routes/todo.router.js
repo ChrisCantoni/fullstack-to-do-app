@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 // GET
 router.get('/', (req, res) => {
-    queryText = `SELECT * FROM "todo";`;
+    queryText = `SELECT * FROM "todo" ORDER BY "completed", "id";`;
     pool.query(queryText)
     .then((result) => {
         console.log('GET /todo successful');
