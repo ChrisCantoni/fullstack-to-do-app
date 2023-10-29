@@ -1,9 +1,16 @@
 import axios from 'axios';
 import moment from 'moment';
 import './TodoItem.css';
+import {useState, useEffect} from 'react';
 
 const TodoItem = (props) => {
     
+    // const [date, setDate] = useState();
+
+    let date = new Date();
+    date = date.toISOString();
+    // Implement useStates here for comparing current time with deadline and displayings result
+
     const clickHandler = () => {
         axios.delete(`/todo/${props.todo.id}`)
         .then((response) => {
@@ -15,9 +22,13 @@ const TodoItem = (props) => {
     }
 
     const toggleComplete = () => {
-        let date = new Date();
-        console.log(props.todo.deadline);
-        let completeDate = date.toLocaleTimeString(); // Date down to the minute slice(0, 21)
+        console.log('deadline', props.todo.deadline);
+        console.log('date', date);
+        if (date > props.todo.deadline) {
+            console.log('date is greater');
+        } else if (date < props.todo.deadline) {
+            console.log('deadline is greater');
+        }
         console.log('Completed', props.todo.objective);
         axios.put(`/todo/${props.todo.id}`)
         .then((response) => {
@@ -28,15 +39,19 @@ const TodoItem = (props) => {
         })
     }
 
+    // useEffect(() => {
+    //     props.getToDoList();
+    // }, []);
+
     return (
-        <>
-            <tr className={props.todo.completed ? 'complete' : 'pending'}>
+        <> 
+            <tr className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
                 <td>{props.todo.objective}</td>
                 <td>{moment(props.todo.date_added).format('llll')}</td>
                 <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}</td>
-                
                 <td><button onClick={toggleComplete}>Completed?</button></td>
-                <td className='pending'>{props.todo.completed ? moment(props.todo.date_completed).format('llll') : 'Not yet!'}</td>
+                
+                <td>{props.todo.completed ? moment(props.todo.date_completed).format('llll') : (date > props.todo.deadline ? 'URGENT!' : 'Not yet!')}</td>
                 
                 {/* <td>{moment(props.todo.date_completed).format('llll')}</td> */}
                 {/* <td>{props.todo.date_completed = undefined ? 'Complete this' :

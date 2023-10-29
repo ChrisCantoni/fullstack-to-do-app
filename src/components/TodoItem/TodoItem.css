@@ -1,6 +1,14 @@
+/* tr:nth-child(even) {
+    background-color: #D6EEEE;
+  } */
+
 .complete {
    
     text-decoration:line-through;
+}
+
+.urgent {
+    background-color:rgb(239, 79, 79);
 }
 
 .pending {
@@ -8,9 +16,7 @@
     text-decoration:none;
 }
 
-tr:nth-child(even) {
-    background-color: #D6EEEE;
-  }
+
 
 tr:hover {
     background-color: #77f4ca;
