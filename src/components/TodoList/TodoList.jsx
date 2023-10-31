@@ -1,4 +1,6 @@
 import TodoItem from '../TodoItem/TodoItem';
+import './TodoList.css';
+import Done from '@mui/icons-material/Done';
 
 const TodoList = (props) => {
 
@@ -6,13 +8,13 @@ const TodoList = (props) => {
     
 
     return (
-        <table>
+        <table className="todoList">
             <thead>
                 <tr>
                 <th>To Do</th>
                 <th>Date Added</th>
                 <th>Deadline</th>
-                <th>Completed?</th>
+                <th>{<Done/>}</th>
                 <th>Date Completed</th>
                 <th>Delete</th>
                 </tr>
