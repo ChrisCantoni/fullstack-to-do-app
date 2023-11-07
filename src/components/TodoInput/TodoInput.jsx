@@ -42,7 +42,7 @@ const TodoInput = (props) => {
             <form onSubmit={sendTodoToServer}>
                 <div className='input'>
                 To Do: <br/>
-                <TextField variant="outlined" size="small" style={{width: '400px'}} placeholder="Today I'm going to get it done!"
+                <TextField variant="outlined" size="small" style={{width: '400px'}} placeholder="I'm going to get it done!"
                 value={objective} onChange={(e) => setObjective(e.target.value)}
                 />
                 </div>

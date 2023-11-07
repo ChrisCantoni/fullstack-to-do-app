@@ -4,6 +4,7 @@ import TodoInput from '../TodoInput/TodoInput';
 import TodoList from '../TodoList/TodoList';
 import Container from '@mui/material/Container';
 import './App.css';
+import { Typography } from '@mui/material';
 
 function App () {
   const [toDoList, setToDoList] = useState([]);

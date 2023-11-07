@@ -12,7 +12,7 @@ VALUES
 ('Write to Hans'),
 ('Replace Batmobile');
 
--- Tables were originally set as TIMESTAMP. Fixed on Postico. Unnecessary here.
+-- After getting an MVP working I expanded the database to include dates
 ALTER TABLE "todo"
 ADD "date_added" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
 ADD "deadline" TIMESTAMPTZ,
