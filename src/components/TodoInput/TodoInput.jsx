@@ -14,7 +14,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 const TodoInput = (props) => {
 
     const [objective, setObjective] = useState('');
-    const [deadline, setDeadline] = useState('');
+    const [deadline, setDeadline] = useState(null);
 
     let date = new Date();
 
@@ -22,15 +22,13 @@ const TodoInput = (props) => {
         event.preventDefault();
         console.log(deadline);
         console.log(objective);
-        if (deadline == '') {
-            setDeadline(undefined);
-        }
         axios.post('/todo', {
             objective: objective,
             deadline: deadline
         }).then((response) => {
             console.log('POST /todo successful')
             setObjective('')
+            setDeadline('')
             props.getToDoList();
         }).catch((error) => {
             console.error('POST went bad', error);
@@ -51,7 +49,7 @@ const TodoInput = (props) => {
                 <div>
                 Deadline: <br/>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker defaultValue={dayjs(date)} slotProps={{ textField: { size: 'small' } }} value={deadline} onChange={setDeadline}/>
+                <DateTimePicker slotProps={{ textField: { size: 'small' } }} value={deadline} onChange={setDeadline}/>
                 </LocalizationProvider>
                 </div>
                 <div><br/>

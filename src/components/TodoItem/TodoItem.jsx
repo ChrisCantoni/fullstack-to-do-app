@@ -51,19 +51,23 @@ const TodoItem = (props) => {
 
     return (
         <> 
-            <tr className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
-                <td>{<Priority/>}{props.todo.objective}</td>
-                <td>{moment(props.todo.date_added).format('llll')}</td>
-                <td>{props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}</td>
-                <td><Button variant="contained" sx={{backgroundColor:'#60c6a4', "&hover": {backgroundColor: 'red'}}}className="completeButton" onClick={toggleComplete}>{<Done/>}</Button></td>
-                
-                <td>{props.todo.completed ? moment(props.todo.date_completed).format('llll') : (date > props.todo.deadline ? 'URGENT!' : 'Not yet!')}</td>
+            <tr>
+                <td className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
+                    {date > props.todo.deadline && <Priority/>}{props.todo.objective}</td>
+                <td className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
+                    {moment(props.todo.date_added).format('llll')}</td>
+                <td className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
+                    {props.todo.deadline != undefined ? moment(props.todo.deadline).format('llll') : 'No deadline'}</td>
+                <td className={props.todo.completed ? 'complete' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
+                    <Button variant="contained" sx={{backgroundColor:'#60c6a4', ":hover": {backgroundColor: 'darkgreen'}}}className="completeButton" onClick={toggleComplete}>{<Done/>}</Button></td>
+                <td className={props.todo.completed ? 'completeDate' : (date > props.todo.deadline ? 'urgent' : 'pending')}>
+                    {props.todo.completed ? moment(props.todo.date_completed).format('llll') : (date > props.todo.deadline ? 'URGENT!' : 'Not yet!')}</td>
                 
                 {/* <td>{moment(props.todo.date_completed).format('llll')}</td> */}
                 {/* <td>{props.todo.date_completed = undefined ? 'Complete this' :
                 moment(props.todo.date_completed).format('llll')}</td> */}
 
-                <td><Button variant="contained" sx={{backgroundColor:'red'}}onClick={clickHandler}>{<Delete/>}</Button></td>
+                <td><Button variant="contained" sx={{backgroundColor:'red', ":hover": {backgroundColor: 'darkred'}}}onClick={clickHandler}>{<Delete/>}</Button></td>
             </tr>
         </>
     )
